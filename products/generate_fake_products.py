@@ -2,6 +2,7 @@ import os
 import django
 from faker import Faker
 import random
+from django.utils.text import slugify
 
 # Setup Django environment
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'elasticproject.settings')
@@ -35,9 +36,9 @@ def create_products():
         product = Product.objects.create(
             title=title,
             description=description,
-            category=category,
+            category=slugify(category),
             price=price,
-            brand=brand,
+            brand=slugify(brand),
             sku=sku,
             thumbnail=thumbnail,
         )
